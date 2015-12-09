@@ -13,12 +13,12 @@
 
 ## Resources
 
-* http://developer.android.com/sdk/installing/studio-build.html
-* http://developer.android.com/tools/building/configuring-gradle.html
-* http://developer.android.com/tools/building/plugin-for-gradle.html
-* http://developer.android.com/tools/building/manifest-merge.html
-* http://developer.android.com/tools/building/multidex.html
-* http://developer.android.com/tools/projects/index.html
+* [http://developer.android.com/sdk/installing/studio-build.html](http://developer.android.com/sdk/installing/studio-build.html)
+* [http://developer.android.com/tools/building/configuring-gradle.html](http://developer.android.com/tools/building/configuring-gradle.html)
+* [http://developer.android.com/tools/building/plugin-for-gradle.html](http://developer.android.com/tools/building/plugin-for-gradle.html)
+* [http://developer.android.com/tools/building/manifest-merge.html](http://developer.android.com/tools/building/manifest-merge.html)
+* [http://developer.android.com/tools/building/multidex.html](http://developer.android.com/tools/building/multidex.html)
+* [http://developer.android.com/tools/projects/index.html](http://developer.android.com/tools/projects/index.html)
 
 # Introduction
 
