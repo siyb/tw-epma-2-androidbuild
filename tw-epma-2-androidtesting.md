@@ -19,6 +19,7 @@
 * [http://developer.android.com/tools/building/manifest-merge.html](http://developer.android.com/tools/building/manifest-merge.html)
 * [http://developer.android.com/tools/building/multidex.html](http://developer.android.com/tools/building/multidex.html)
 * [http://developer.android.com/tools/projects/index.html](http://developer.android.com/tools/projects/index.html)
+* [http://developer.android.com/tools/debugging/improving-w-lint.html](http://developer.android.com/tools/debugging/improving-w-lint.html)
 
 # Introduction
 
