@@ -77,6 +77,7 @@
 * Each build variant will result in its own apk
 * Default: defaultConfig (flavour) and release / debug (build types) = release / debug (variants)
 * Adding a new product flavour will add: myFlavourRelease / myFlavourDebug
+* USE BuildVariants tab in Android Studio to toggle build variants!
 
 ## Introduction - Dependencies
 
@@ -106,13 +107,6 @@
 * ./gradlew tasks for a list of all tasks
 
 # Build Files
-
-## Build Files - Local Configuration
-
-* Configuration can happen in local.properties
-    * sdk.dir
-* Put local.properties into .gitignore
-// TODO: MORE
 
 ## Build Files - Project
 
@@ -246,4 +240,4 @@ android {
 
 ```
 
-TODO: defining functions
+# [Example Code](https://github.com/SphericalElephant/android-example-androidbuild)
