@@ -31,6 +31,10 @@
 * Designed to be flexible ...
     * ... in case your project requires more than the bare essentials
 
+## Introduction - What happens
+
+![Android Build (source: http://developers.android.com/)](../build.png)
+
 ## Introduction - build.gradle
 
 * build.gradle files contain the project's build configuration
