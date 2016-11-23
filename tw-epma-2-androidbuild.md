@@ -2,6 +2,12 @@
 % Patrick Sturm
 % 23.11.2016
 
+## Information
+
+* Any issues with this presentation? Write a ticket or send me a pull request ;).
+* Repo: [git@github.com:siyb/tw-epma-2-androidbuild.git](git@github.com:siyb/tw-epma-2-androidbuild.git)
+
+
 # Agenda
 
 ## Agenda
