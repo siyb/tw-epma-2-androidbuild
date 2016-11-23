@@ -1,6 +1,6 @@
 % Android Build System
 % Patrick Sturm
-% 09.12.2015
+% 23.11.2016
 
 # Agenda
 
@@ -9,9 +9,9 @@
 * Introduction into Android Build System
 * Build file examples
 
-# Resources
+# Introduction
 
-## Resources
+## Introduction - Resources
 
 * [http://developer.android.com/sdk/installing/studio-build.html](http://developer.android.com/sdk/installing/studio-build.html)
 * [http://developer.android.com/tools/building/configuring-gradle.html](http://developer.android.com/tools/building/configuring-gradle.html)
@@ -20,8 +20,6 @@
 * [http://developer.android.com/tools/building/multidex.html](http://developer.android.com/tools/building/multidex.html)
 * [http://developer.android.com/tools/projects/index.html](http://developer.android.com/tools/projects/index.html)
 * [http://developer.android.com/tools/debugging/improving-w-lint.html](http://developer.android.com/tools/debugging/improving-w-lint.html)
-
-# Introduction
 
 ## Introduction - Gradle and Android
 
@@ -34,7 +32,7 @@
 
 ## Introduction - What happens
 
-![Android Build (source: http://developers.android.com/)](../build.png)
+![Android Build (source: http://developers.android.com/)](./build.png)
 
 ## Introduction - build.gradle
 
@@ -58,7 +56,7 @@
 * Configurable globally or on a per module basis
 
 
-## Build Types
+## Introduction - Build Types
 * Decribes how to compile / package an app
     * debuggable?
     * minify?
@@ -242,3 +240,5 @@ android {
 ```
 
 # [Example Code](https://github.com/SphericalElephant/android-example-androidbuild)
+
+# Any Questions
