@@ -1,6 +1,6 @@
 % Android Build System
 % Patrick Sturm
-% 01.03.2017
+% 25.09.2017
 
 ## Information
 
