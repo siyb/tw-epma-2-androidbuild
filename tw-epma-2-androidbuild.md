@@ -1,6 +1,6 @@
 % Android Build System
 % Patrick Sturm
-% 25.09.2017
+% 02.28.2018
 
 ## Information
 
@@ -61,7 +61,6 @@
     * App Engine (does not concern us in this course)
 * Configurable globally or on a per module basis
 
-
 ## Introduction - Build Types
 * Decribes how to compile / package an app
     * debuggable?
@@ -76,15 +75,26 @@
     * Alpha / Beta (e.g. with bug reporting code and remote logging)
 * put code into app/src/FLAVOUR/(src/res) to provide flavour specific source code
 
+## Introduction - Product Flavour Dimensions
+
+* Starting from gradle 3.0.0, all flavours must have dimensions
+* Flavour dimensions allow configuration changes within a product flavour and therefore increase flexibility.
+* Flavour dimensions must be specified using: ```flavorDimensions "d1", "d2"```
+    * The order in which you specify the dimensions creates an order of presedence, i.e. when gradle merges the sources and configurations, d1 will override configuration of d2
+    * Overriding happens like: defaultConfig -> \$flavour -> \$flavourDimension
+* Kind of weird because dimension are defined as 
+
 ## Introduction - Build Variants
 
-* Combination of build type (release, debug) and flavour (e.g. paid / free)
+* Combination of build type (release, debug), flavour (e.g. paid / free) and flavour dimension.
+    * e.g.: myapp-\$dimension-\$flavour-\$buildType.apk (name in studio: \$dimension\$flavour\$buildType)
 * Each build variant will result in its own apk
-* Default: defaultConfig (flavour) and release / debug (build types) = release / debug (variants)
 * Adding a new product flavour will add: myFlavourRelease / myFlavourDebug
-* USE BuildVariants tab in Android Studio to toggle build variants!
+* USE "Build Variant" tab in Android Studio to toggle build variants!
+    * View -> Windows - Build Variants
+    * By switching build variants, you are also switching the source files shown in the IDE!
 
-## Introduction - Dependencies
+## Introduction - Dependencies 1
 
 * Module depedencies
     * dependencies on other modules within the project
@@ -94,11 +104,32 @@
     * Requires repository for dependency (e.g. maven)
     * group:name:version, e.g. com.android.support:support-v4:23.0.1
 
+## Introduction - Dependencies 2
+
+* 3.0.0 changes the dependency types as well
+* ```compile``` dependencies are now divided into ```implementation``` and ```api``` dependencies.
+* ```provided``` has been renamed to ```compileOnly```
+* ```apk``` has been renamed to ```runtimeOnly```
+
+## Introduction - Dependencies 3
+
+* ```classpath```: used to add dependencies to the classpath during compilation, used for plugins. Mostly project specific build file.
+* ```implementation```: tells gradle that the dependencies does not pass through to other modules, that are depended on the module that has the dependency. The dependency will still be available to other modules at runtime.
+    * increases build time
+* ```api```: like compile, passes on the dependency to other modules.
+* ```compileOnly```: dependency is only available at compile time.
+* ```runtimeOnly```: packages the dependency in the apk but the dependecy itself is not required for compilation (e.g. plugin).
+* you prefix a dependency with a build variant to control dependencies even further!
+    * lets assume that you have a debug build type with a full flavour and a api23 dimension, an ```api``` dependency could look like: 
+    * by prefixing dependencies with ```test```, e.g. ```testApi``` gradle knows that the dependency is not required for apk creation.
+
 ## Introduction - Signing
 
 * You need to sign your app in order to deploy it onto a (virtual) device
 * Signing configs can be defined on a per buildType basis
 * Allows automation (keystore / key - passwords can be supplied)
+* Creating a keystore / key using: ```keytool -genkey -v -keystore release.jks -keyalg RSA -keysize 2048 -validity 10000 -alias the-alias```
+    * Alternativly you can use the UI
 
 ## Introduction - Tasks
 * Like targets in a Makefile
@@ -123,7 +154,7 @@ buildscript {
     }
     dependencies {
         // gradle version
-        classpath 'com.android.tools.build:gradle:1.0.1'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 // applies to all sub modules
@@ -139,14 +170,14 @@ allprojects {
 ```groovy
 apply plugin: 'com.android.application' // makes android {} available
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.1'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     // Manifest stuff / other defaults
     defaultConfig {
         // you still need to define package name -> R
         applicationId "com.test.example"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 2
         versionName "2.0"
         compileOptions {
@@ -170,12 +201,12 @@ android {
     // build types
     buildTypes {
         release {
-            minifyEnabled false
             // default and custom rules
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
                 'proguard-rules.pro'
         }
         debug {
+            minifyEnabled false
             debuggable true
         }
     }
@@ -235,9 +266,9 @@ android {
     signingConfigs {
         release {
             // can be configured using properties file, directly, env, etc
-            storeFile file("release.keystore")
+            storeFile file("release.jks")
             storePassword System.getenv("KSTOREPWD")
-            keyAlias "monstyle"
+            keyAlias "my_key"
             keyPassword System.getenv("KEYPWD")
         }
     }
